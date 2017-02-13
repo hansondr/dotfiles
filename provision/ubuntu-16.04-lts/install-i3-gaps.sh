@@ -8,6 +8,7 @@ sudo apt install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev \
   libtool
 
 echo "building xcb-util-xrm..."
+if [ -d "/tmp/xcb-util-xrm" ]; then rm -rf /tmp/xcb-util-xrm; fi
 git clone https://github.com/Airblader/xcb-util-xrm /tmp/xcb-util-xrm
 cd /tmp/xcb-util-xrm
 git submodule update --init
@@ -17,6 +18,7 @@ sudo make install
 echo "installation of xcb-util-xrm completed."
 
 echo "i3-gaps dependencies installed.  Downloading i3-gaps..."
+if [ -d "/tmp/i3-gaps" ]; then rm -rf /tmp/i3-gaps; fi
 git clone -b gaps https://www.github.com/Airblader/i3 /tmp/i3-gaps
 cd /tmp/i3-gaps
 

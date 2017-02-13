@@ -1,25 +1,13 @@
 #!/bin/bash
 
-if [ ! $(which git) ] || [ ! $(which stow) ]; then
-  sudo apt install -y git stow
-fi
-
-# Install i3 if it doesn't already exist
-if [ ! $(which i3) ]; then
-  install-i3-gaps.sh
-else
-  echo "i3 is already installed."
-fi
+# Install vim if it doesn't already exist
+command -v vim >/dev/null 2>&1 || { sudo apt install -y vim; }
 
 # Install i3 utilities if they don't already exist
-if [ ! $(which i3lock) ]; then
-  sudo apt install -y i3blocks i3lock
-fi
+command -v i3lock >/dev/null 2>&1 || { sudo apt install -y i3blocks i3lock; }
 
 # Install rofi, feh and compton unless already installed
-if [ ! $(which rofi) ]; then
-  sudo apt install -y rofi feh compton
-fi
+command -v rofi >/dev/null 2>&1 || { sudo apt install -y feh rofi compton; }
 
 # Mass run stow on our dotfiles
 cd ~/dotfiles
@@ -27,3 +15,10 @@ cd ~/dotfiles
 
 # Install zsh
 ~/dotfiles/provision/ubuntu-16.04-lts/install-zsh.sh
+
+# Install i3 if it doesn't already exist
+if [ ! -d "/tmp/i3-gaps" ]; then
+  install-i3-gaps.sh
+else
+  echo "i3 is already installed."
+fi
