@@ -8,3 +8,7 @@ stow i3
 stow vim
 stow x
 stow zsh
+stow compton
+stow dunst
+stow bin
+stow browser

@@ -102,3 +102,6 @@ nnoremap <C-l> <C-w>l
 
 " Always use vertical diffs
 set diffopt+=vertical
+
+" Use wal colorscheme
+" colorscheme wal

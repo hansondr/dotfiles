@@ -18,7 +18,9 @@ cd ~/dotfiles
 
 # Install i3 if it doesn't already exist
 if [ ! -d "/tmp/i3-gaps" ]; then
-  install-i3-gaps.sh
+  ~/dotfiles/provision/ubuntu-16.04-lts/install-i3-gaps.sh
 else
   echo "i3 is already installed."
 fi
+
+~/dotfiles/provision/ubuntu-16.04-lts/install-aesthetics.sh
