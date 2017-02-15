@@ -2,6 +2,9 @@
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
 
+set $monL HDMI1
+set $monR HDMI2
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -94,6 +97,18 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# workspace to monitor mapping
+workspace $workspace1 output $monL
+workspace $workspace2 output $monR
+workspace $workspace3 output $monL
+workspace $workspace4 output $monR
+workspace $workspace5 output $monL
+workspace $workspace6 output $monR
+workspace $workspace7 output $monL
+workspace $workspace8 output $monR
+workspace $workspace9 output $monL
+workspace $workspace10 output $monR
 
 # Application auto-assignment
 #
