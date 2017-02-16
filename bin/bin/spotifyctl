@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+case $1 in
+playpause)
+  dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+  ;;
+next)
+  dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+  ;;
+prev)
+  dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+  ;;
+*)
+  echo "please pass an action (playpause|next|prev)"
+  ;;
+esac

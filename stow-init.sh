@@ -12,3 +12,4 @@ stow compton
 stow dunst
 stow bin
 stow browser
+stow rbenv
