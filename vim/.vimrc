@@ -104,4 +104,4 @@ nnoremap <C-l> <C-w>l
 set diffopt+=vertical
 
 " Use wal colorscheme
-" colorscheme wal
+colorscheme wal

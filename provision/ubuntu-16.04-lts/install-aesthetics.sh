@@ -28,3 +28,6 @@ if [ ! -f /etc/apt/sources.list.d/arc-theme.list ]; then
   sudo apt install -y arc-theme
   rm Release.key
 fi
+
+# Install prerequisites for blurred i3lock screen
+command -v xautolock >/dev/null 2>&1 || { sudo apt install -y i3lock scrot xautolock; }

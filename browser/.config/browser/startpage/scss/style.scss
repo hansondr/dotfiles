@@ -62,3 +62,33 @@ a {
     color: $color8;
   }
 }
+
+.colors-preview {
+  display: block;
+  margin: 0 auto;
+  width: $width;
+
+  .color {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+  }
+
+  .color0 { background-color: $color0 }
+  .color1 { background-color: $color1 }
+  .color2 { background-color: $color2 }
+  .color3 { background-color: $color3 }
+  .color4 { background-color: $color4 }
+  .color5 { background-color: $color5 }
+  .color6 { background-color: $color6 }
+  .color7 { background-color: $color7 }
+  .color8 { background-color: $color8 }
+  .color9 { background-color: $color9 }
+  .color10 { background-color: $color10 }
+  .color11 { background-color: $color11 }
+  .color12 { background-color: $color12 }
+  .color13 { background-color: $color13 }
+  .color14 { background-color: $color14 }
+  .color15 { background-color: $color15 }
+}
+

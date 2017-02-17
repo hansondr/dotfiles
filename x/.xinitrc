@@ -7,3 +7,4 @@ xrdb "$HOME/.Xresources"
 urxvtd -q -f &
 wal -i $(< "${HOME}/.cache/wal/wal") -o "wal-set"
 exec i3
+xautolock -time 10 -locker blurloc

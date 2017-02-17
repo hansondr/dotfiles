@@ -21,9 +21,32 @@ set_scss() {
   sassc --style expanded "${HOME}/.config/browser/startpage/scss/style.scss" > "${HOME}/.config/browser/startpage/style.css"
 }
 
+blur_background() {
+  wallpaper=$(cat "${HOME}/.cache/wal/wal")
+  wallpaper_blur="${HOME}/.cache/wallpaper/blurred.png"
+  if [ -f $wallpaper_blur ]; then
+    rm $wallpaper_blur
+  fi
+  convert $wallpaper -blur 0x5 $wallpaper_blur
+  convert $wallpaper_blur $wallpaper_blur +append $wallpaper_blur
+}
+
+generate_lock_screen_image() {
+  wallpaper=$(cat "${HOME}/.cache/wal/wal")
+  wallpaper_blur="${HOME}/.cache/wallpaper/blurred.png"
+  if [ -f $wallpaper_blur ]; then
+    rm $wallpaper_blur
+  fi
+  # pixelate the background
+  convert $wallpaper -scale 10% -scale 1000% $wallpaper_blur
+  convert $wallpaper_blur $wallpaper_blur +append $wallpaper_blur
+}
+
 main() {
   reload_dunst &
   set_scss &
+  blur_background &
+  #generate_lock_screen_image &
 }
 
 main >/dev/null 2>&1
