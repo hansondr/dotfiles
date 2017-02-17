@@ -23,22 +23,14 @@ set_scss() {
 
 blur_background() {
   wallpaper=$(cat "${HOME}/.cache/wal/wal")
+  wallsized="${HOME}/.cache/wallpaper/resized.png"
   wallpaper_blur="${HOME}/.cache/wallpaper/blurred.png"
-  if [ -f $wallpaper_blur ]; then
-    rm $wallpaper_blur
-  fi
-  convert $wallpaper -blur 0x5 $wallpaper_blur
-  convert $wallpaper_blur $wallpaper_blur +append $wallpaper_blur
-}
 
-generate_lock_screen_image() {
-  wallpaper=$(cat "${HOME}/.cache/wal/wal")
-  wallpaper_blur="${HOME}/.cache/wallpaper/blurred.png"
-  if [ -f $wallpaper_blur ]; then
-    rm $wallpaper_blur
-  fi
-  # pixelate the background
-  convert $wallpaper -scale 10% -scale 1000% $wallpaper_blur
+  rm $wallpaper_blur 2> /dev/null
+  rm $wallsized 2> /dev/null
+
+  convert $wallpaper -resize 1920x1080! $wallsized
+  convert $wallsized -blur 0x5 $wallpaper_blur
   convert $wallpaper_blur $wallpaper_blur +append $wallpaper_blur
 }
 
@@ -46,7 +38,6 @@ main() {
   reload_dunst &
   set_scss &
   blur_background &
-  #generate_lock_screen_image &
 }
 
 main >/dev/null 2>&1

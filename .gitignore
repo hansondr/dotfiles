@@ -1,4 +1,5 @@
 !bin
 vim/bundle
+vim/.vim/plugged
 vim/.vim/.netrwhist
 browser/.config/browser/startpage/style.css
