@@ -105,3 +105,9 @@ set diffopt+=vertical
 
 " Use wal colorscheme
 colorscheme wal
+
+" Salesforce specific setup
+let g:apex_backup_folder = '/tmp/salesforce_apex/backup/'
+let g:apex_temp_folder = '/tmp/salesforce_apex/temp/'
+let g:apex_properties_folder = '/tmp/salesforce_apex/properties/'
+let g:apex_tooling_force_dot_com_path = '/home/drh/.vim/plugged/vim-force.com/tooling-force-current.jar'

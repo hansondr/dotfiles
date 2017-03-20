@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ $# != 1 ]; then
+  echo "Please enter an image file to edit";
+  exit -1;
+fi
+
+if [[ ( $1 != *.jpg ) && ( $1 != *.jpeg ) && ( $1 != *.png ) ]]; then
+  echo "Please enter an _image_ file to edit";
+  exit -1;
+fi
+
+$(gimp $1 2>/dev/null)
