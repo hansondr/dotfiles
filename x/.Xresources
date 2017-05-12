@@ -1,6 +1,7 @@
 ! Custom Xresources
 
-Xft.dpi: 96
+!Xft.dpi: 96
+Xft.dpi: 192
 Xft.autohint: 0
 Xft.antialias: 1
 Xft.hinting: true
@@ -15,8 +16,10 @@ URxvt.scrollBar: false
 URxvt.internalBorder: 15
 
 ! Set Font
-URxvt.font: xft:Hack:pixelsize=13
-URxvt.boldFont: xft:Hack Bold:pixelsize=13
+!URxvt.font: xft:Hack:pixelsize=13
+!URxvt.boldFont: xft:Hack Bold:pixelsize=13
+URxvt.font: xft:Hack:size=11
+URxvt.boldFont: xft:Hack Bold:size=11
 
 ! Enable copy/paste with Ctrl-Shift-C/V
 URxvt.iso14755: false

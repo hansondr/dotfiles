@@ -1,0 +1,6 @@
+#!/bin/bash
+
+current=$(cat /sys/class/backlight/intel_backlight/brightness)
+max=$(cat /sys/class/backlight/intel_backlight/max_brightness)
+percent=$(awk "BEGIN { pc=100*${current}/${max}; i=int(pc); print (pc-i<0.5)?i:i+1 }")
+echo "$percent%"

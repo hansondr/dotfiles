@@ -69,7 +69,7 @@ bindsym $mod+a focus parent
 # terminals
 set $workspace1 "1:"
 # misc
-set $workspace2 "2:"
+set $workspace2 "2:"
 # slack
 set $workspace3 "3:"
 # misc
@@ -85,7 +85,7 @@ set $workspace8 "8:"
 # misc
 set $workspace9 "9:"
 # browsers
-set $workspace10 "0:"
+set $workspace10 "0:"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -112,21 +112,19 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # workspace to monitor mapping
-workspace $workspace1 output $monL
-workspace $workspace2 output $monR
-workspace $workspace3 output $monL
-workspace $workspace4 output $monR
-workspace $workspace5 output $monL
-workspace $workspace6 output $monR
-workspace $workspace7 output $monL
-workspace $workspace8 output $monR
-workspace $workspace9 output $monL
-workspace $workspace10 output $monR
+#workspace $workspace1 output $monL
+#workspace $workspace2 output $monR
+#workspace $workspace3 output $monL
+#workspace $workspace4 output $monR
+#workspace $workspace5 output $monL
+#workspace $workspace6 output $monR
+#workspace $workspace7 output $monL
+#workspace $workspace8 output $monR
+#workspace $workspace9 output $monL
+#workspace $workspace10 output $monR
 
 # Application auto-assignment
 #
-assign [class="Firefox"] $workspace10
-assign [class="Google-chrome"] $workspace10
 for_window [class="Spotify"] move to workspace $workspace6
 assign [class="Slack"] $workspace3
 
@@ -180,9 +178,13 @@ gaps inner 25
 
 # Media Keys
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec backlight -inc 20
+bindsym XF86MonBrightnessDown exec backlight -dec 20
 
 # Media player controls
 bindsym XF86AudioPlay exec "spotifyctl playpause"
@@ -215,7 +217,10 @@ bindsym $mod+c move position center
 # Cycle wallpapers
 bindsym $mod+w exec "wal -i $HOME/Pictures/Wallpapers -o wal-set"
 exec wal -i "$(< "${HOME}/.cache/wal/wal")" -o "wal-set"
-exec spotify
-exec slack
-exec google-chrome
-exec urxvtc
+
+# Auto start applications
+exec nm_applet
+#exec "spotify --force-device-scale-factor=2.0"
+#exec slack
+#exec google-chrome
+#exec urxvtc

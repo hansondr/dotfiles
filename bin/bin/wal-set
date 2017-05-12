@@ -22,6 +22,7 @@ set_scss() {
 }
 
 blur_background() {
+  target_resolution=1920x1080!
   wallpaper=$(cat "${HOME}/.cache/wal/wal")
   wallsized="${HOME}/.cache/wallpaper/resized.png"
   wallpaper_blur="${HOME}/.cache/wallpaper/blurred.png"
@@ -29,9 +30,10 @@ blur_background() {
   rm $wallpaper_blur 2> /dev/null
   rm $wallsized 2> /dev/null
 
-  convert $wallpaper -resize 1920x1080! $wallsized
-  convert $wallsized -blur 0x5 $wallpaper_blur
-  convert $wallpaper_blur $wallpaper_blur +append $wallpaper_blur
+  convert $wallpaper -blur 0x5 $wallpaper_blur
+  #convert $wallpaper -resize $target_resolution $wallsized
+  #convert $wallsized -blur 0x5 $wallpaper_blur
+  #convert $wallpaper_blur $wallpaper_blur +append $wallpaper_blur
 }
 
 main() {

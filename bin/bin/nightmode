@@ -1,0 +1,3 @@
+#!/bin/bash
+
+backlight min 1 > /dev/null

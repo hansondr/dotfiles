@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [ -z $2 ] || [ ! $2 -ge 0 ]; then
+  echo "Please specify a value greater than 0 for your second arg";
+fi
+
+if [ $1 == "-dec" ]; then
+  min=0
+  dec_amount=$2
+  current=$(cat /sys/class/backlight/intel_backlight/brightness)
+  amount=$(expr $current - $dec_amount)
+  if [ $amount -lt $min ]; then
+    amount=$min
+  fi
+elif [ $1 == "-inc" ]; then
+  max=$(cat /sys/class/backlight/intel_backlight/max_brightness)
+  inc_amount=$2
+  current=$(cat /sys/class/backlight/intel_backlight/brightness)
+  amount=$(expr $current + $inc_amount)
+  if [ $amount -gt $max ]; then
+    amount=$max
+  fi
+elif [ $1 == "min" ]; then
+  amount=1
+elif [ $1 == "max" ]; then
+  amount=$(cat /sys/class/backlight/intel_backlight/max_brightness)
+fi
+
+echo $amount | sudo tee /sys/class/backlight/intel_backlight/brightness 2>/dev/null 
