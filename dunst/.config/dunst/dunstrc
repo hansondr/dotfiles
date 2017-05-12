@@ -1,6 +1,7 @@
 # vim: ft=cfg
 [global]
-  font = "System San Francisco Display Regular 13"
+  #font = "System San Francisco Display Regular 13"
+  font = xos4 Terminus Regular 8
 
   allow_markup = no
   plain_text = no

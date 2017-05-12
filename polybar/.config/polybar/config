@@ -1,0 +1,301 @@
+[colors]
+fg = ${xrdb:color7}
+modfg = ${xrdb:color1}
+bg = ${xrdb:color0}
+
+white = #d1d1d1
+gray = #585858
+black = #1d1d1d
+red = #c795ae
+blue = #95aec7
+yellow = #c7ae95
+green = #aec795
+
+
+[bar/topbar]
+monitor = ${env:MONITOR}
+fixed-center = true
+
+width = 100%
+height = 3%
+radius = 0.0
+
+enable-ipc = false
+
+padding-left = 1
+padding-right = 0
+
+module-margin-right = 0
+module-margin-left = 0
+
+background = ${colors.bg}
+foreground = ${colors.modfg}
+
+overline-size = 2
+overline-color = #{colors.white}
+underline-size = 4
+underline-color = #{colors.modfg}
+
+font-0 = xos4terminus:size=10;0
+font-1 = FontAwesome:size=12;0
+font-2 = TakaoGothic:weight=bold:size=12;0
+font-3 = FontAwesome:size=12;0
+
+modules-left = i3
+modules-center = volume
+modules-right = cpu memory filesystem eth date powermenu
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+label-maxlen = 30
+
+
+[module/i3]
+type = internal/i3
+format = <label-mode> <label-state>
+index-sort = true
+pin-workspaces = true
+wrapping-scroll = false
+
+; LABELS
+label-mode = %mode%
+label-mode-padding = 2
+
+; -> Fonts
+label-focused-font = 1
+label-unfocused-font = 1
+label-urgent-font = 1
+label-visible-font = 1
+
+; -> Focused
+label-focused = %index%
+label-focused-foreground = ${colors.white}
+label-focused-underline = ${colors.white}
+label-focused-padding = 4
+
+; -> Unfocused
+label-unfocused = %index%
+label-unfocused-padding = 4
+label-unfocused-foreground = ${colors.gray}
+label-unfocused-underline = ${colors.gray}
+
+; -> Urgent
+label-urgent = %index%
+label-urgent-underline = ${colors.red}
+label-urgent-foreground = ${colors.red}
+label-urgent-padding = 4
+
+; -> Visible
+label-visible = %index%
+label-visible-foreground = ${colors.modfg}
+label-visible-underline = ${colors.modfg}
+label-visible-padding = 4
+
+
+[module/date]
+type = internal/date
+date =  %b/%d/%y %H:%M
+interval = 5
+
+format-underline = ${colors.modfg}
+format-background = ${colors.bg}
+format-padding = 2
+
+
+[module/powermenu]
+type = custom/menu
+
+format-padding = 4
+
+label-open = 
+label-open-foreground = #b63650
+label-close =
+
+menu-0-0 =  shutdown
+menu-0-0-exec = shutdown now
+menu-0-1 =  restart
+menu-0-1-exec = shutdown -r now
+menu-0-2 =  logout
+menu-0-2-exec = i3-msg exit
+menu-0-3 =  cancel
+
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted =  %free%
+label-mounted-underline = ${colors.modfg}
+label-mounted-padding = 1
+label-mounted-background = ${colors.bg}
+
+label-unmounted =
+label-unmounted-foreground = ${colors.bg}
+
+[module/backlight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = ${colors.white}
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = #555
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-label = internal/cpu
+label = %{F${colors.fg}  %percentage% %{F-}
+format = <label>
+padding = 2
+
+label-underline = ${colors.modfg}
+label-background = ${colors.bg}
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+ramp-coreload-underline = ${colors.fg}
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = %{F${colors.white}  %percentage_used% %{F-}
+label-underline = ${colors.modfg}
+label-foreground = ${colors.fg}
+label-background = ${colors.bg}
+
+
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+format-connected-padding = 1
+format-disconnected-padding = 1
+
+format-connected = <label-connected}
+format-connected-underline = ${colors.white}
+format-disconnected-underline = ${colors.gray}
+
+label-connected =  %essid%
+label-disconnected = 
+label-disconnected-forground = ${colors.gray}
+
+
+[module/eth]
+type = internal/network
+interface = enp0s25
+interval = 3.0
+
+format-connected-padding = 1
+format-disconnected-padding = 1
+
+format-connected-underline = ${colors.white}
+format-disconnected-underline = ${colors.gray}
+
+label-connected = 
+label-disconnected = 
+label-disconnected-foreground = ${colors.gray}
+
+
+[module/volume]
+type = internal/volume
+format-volume = <bar-volume>
+format-muted = <label-muted>
+
+label-volume = 🔉
+label-volume-foreground = ${colors.white}
+
+label-muted = 🔇 mute
+label-muted-foreground = ${colors.gray}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.green}
+bar-volume-foreground-1 = ${colors.green}
+bar-volume-foreground-2 = ${colors.green}
+bar-volume-foreground-3 = ${colors.green}
+bar-volume-foreground-4 = ${colors.green}
+bar-volume-foreground-5 = ${colors.green}
+bar-volume-gradient = false
+bar-volume-indicator = 
+bar-volume-indicator-font = 4
+bar-volume-indicator-foreground = ${colors.white}
+bar-volume-fill = 
+bar-volume-fill-font = 4
+bar-volume-empty = 
+bar-volume-empty-font = 4
+bar-volume-empty-foreground = ${colors.gray}
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.green}
+format-charging-padding = 1
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.yellow}
+format-discharging-padding = 1
+
+format-full =   <label-full>
+format-full-underline = ${self.format-charging-underline}
+format-full-overline = ${self.format-charging-underline}
+format-full-padding = 1
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.white}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.white}
+animation-charging-framerate = 500
+
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 65
+
+format = <label>
+format-underline = ${colors.white}
+format-warn = <label-warn>
+format-warn-underline = ${colors.red}
+
+format-padding = 1
+format-warn-padding = 1
+
+label =  %temperature%
+label-warn =  %temperature%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.gray}

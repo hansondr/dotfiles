@@ -15,8 +15,8 @@ URxvt.scrollBar: false
 URxvt.internalBorder: 15
 
 ! Set Font
-URxvt.font: xft:Hack:pixelsize=13
-URxvt.boldFont: xft:Hack Bold:pixelsize=13
+URxvt.font: xft:Hack:pixelsize=12
+URxvt.boldFont: xft:Hack Bold:pixelsize=12
 
 ! Enable copy/paste with Ctrl-Shift-C/V
 URxvt.iso14755: false

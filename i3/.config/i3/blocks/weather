@@ -16,7 +16,7 @@ case $WEATHER_CONDITION in
   'Clouds')
     WEATHER_ICON=""
     ;;
-  'Rain')
+  'Rain' | 'Drizzle')
     WEATHER_ICON=""
     ;;
   'Snow')

@@ -13,3 +13,4 @@ stow dunst
 stow bin
 stow browser
 stow rbenv
+stow polybar
