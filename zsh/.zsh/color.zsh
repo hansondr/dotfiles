@@ -6,7 +6,7 @@ colors
 export CLICOLOR=1
 
 # Import colorscheme from 'wal'
-(wal -r &)
+(wal -rt &)
 if [ -f "$HOME/.cache/wal/colors.sh" ]; then
   source "$HOME/.cache/wal/colors.sh"
 fi
