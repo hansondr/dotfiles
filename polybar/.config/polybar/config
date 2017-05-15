@@ -25,8 +25,7 @@ enable-ipc = false
 padding-left = 1
 padding-right = 0
 
-module-margin-right = 0
-module-margin-left = 0
+module-margin = 1
 
 background = ${colors.bg}
 foreground = ${colors.modfg}
@@ -42,7 +41,7 @@ font-2 = TakaoGothic:weight=bold:size=12;0
 font-3 = FontAwesome:size=12;0
 
 modules-left = i3
-modules-center = volume
+modules-center = volume spotify
 modules-right = cpu memory filesystem eth date powermenu
 
 
@@ -61,7 +60,7 @@ wrapping-scroll = false
 
 ; LABELS
 label-mode = %mode%
-label-mode-padding = 2
+label-mode-padding = 4
 
 ; -> Fonts
 label-focused-font = 1
@@ -74,44 +73,46 @@ label-focused = %index%
 label-focused-foreground = ${colors.white}
 label-focused-underline = ${colors.white}
 label-focused-padding = 4
+label-focused-margin = 1
 
 ; -> Unfocused
 label-unfocused = %index%
-label-unfocused-padding = 4
 label-unfocused-foreground = ${colors.gray}
 label-unfocused-underline = ${colors.gray}
+label-unfocused-padding = 4
+label-unfocused-margin = 1
 
 ; -> Urgent
 label-urgent = %index%
 label-urgent-underline = ${colors.red}
 label-urgent-foreground = ${colors.red}
 label-urgent-padding = 4
+label-urgent-margin = 1
 
 ; -> Visible
 label-visible = %index%
 label-visible-foreground = ${colors.modfg}
 label-visible-underline = ${colors.modfg}
 label-visible-padding = 4
+label-visible-margin = 1
 
 
 [module/date]
 type = internal/date
-date =  %b/%d/%y %H:%M
+date =  %b %d %l:%M %P
 interval = 5
-
 format-underline = ${colors.modfg}
 format-background = ${colors.bg}
-format-padding = 2
 
 
 [module/powermenu]
 type = custom/menu
-
-format-padding = 4
+format-padding = 2
 
 label-open = 
 label-open-foreground = #b63650
 label-close =
+label-separator = %{B}  %{B-}
 
 menu-0-0 =  shutdown
 menu-0-0-exec = shutdown now
@@ -153,11 +154,12 @@ bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = #555
 
+
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-label = internal/cpu
-label = %{F${colors.fg}  %percentage% %{F-}
+label = %{F${colors.fg}  %percentage%%%{F-}
 format = <label>
 padding = 2
 
@@ -178,7 +180,7 @@ ramp-coreload-underline = ${colors.fg}
 [module/memory]
 type = internal/memory
 interval = 2
-label = %{F${colors.white}  %percentage_used% %{F-}
+label = %{F${colors.white}  %percentage_used%%%{F-}
 label-underline = ${colors.modfg}
 label-foreground = ${colors.fg}
 label-background = ${colors.bg}
@@ -244,6 +246,13 @@ bar-volume-fill-font = 4
 bar-volume-empty = 
 bar-volume-empty-font = 4
 bar-volume-empty-foreground = ${colors.gray}
+
+
+[module/spotify]
+type = custom/script
+exec = ~/.config/polybar/spotify.sh %artist% - %title%
+tail = true
+interval = 2
 
 
 [module/battery]

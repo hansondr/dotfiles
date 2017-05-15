@@ -199,7 +199,7 @@ bindsym XF86AudioPrev exec "spotifyctl prev"
 bindsym $mod+c move position center
 
 # Cycle wallpapers
-bindsym $mod+w exec "wal -i $HOME/Pictures/Wallpapers -o wal-set"
+bindsym $mod+w exec "wal -i $HOME/Pictures/Wallpapers -t -o wal-set"
 
 # Background Processes
 # handled in ~/.xinitrc
