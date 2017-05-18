@@ -15,6 +15,10 @@ green = #aec795
 [bar/topbar]
 monitor = ${env:MONITOR}
 fixed-center = true
+tray-position = right
+tray-detached = false
+tray-background = #ff0000
+tray-maxsize = 16
 
 width = 100%
 height = 3%
@@ -27,13 +31,13 @@ padding-right = 0
 
 module-margin = 1
 
-background = ${colors.bg}
+background =
 foreground = ${colors.modfg}
 
 overline-size = 2
-overline-color = #{colors.white}
+overline-color = ${colors.white}
 underline-size = 4
-underline-color = #{colors.modfg}
+underline-color = ${colors.modfg}
 
 font-0 = xos4terminus:size=10;0
 font-1 = FontAwesome:size=12;0
@@ -71,6 +75,7 @@ label-visible-font = 1
 ; -> Focused
 label-focused = %index%
 label-focused-foreground = ${colors.white}
+label-focused-background= ${colors.bg}
 label-focused-underline = ${colors.white}
 label-focused-padding = 4
 label-focused-margin = 1
@@ -78,6 +83,7 @@ label-focused-margin = 1
 ; -> Unfocused
 label-unfocused = %index%
 label-unfocused-foreground = ${colors.gray}
+label-unfocused-background = ${colors.bg}
 label-unfocused-underline = ${colors.gray}
 label-unfocused-padding = 4
 label-unfocused-margin = 1
@@ -85,13 +91,15 @@ label-unfocused-margin = 1
 ; -> Urgent
 label-urgent = %index%
 label-urgent-underline = ${colors.red}
-label-urgent-foreground = ${colors.red}
+label-urgent-foreground = ${colors.white}
+label-urgent-background = ${colors.red}
 label-urgent-padding = 4
 label-urgent-margin = 1
 
 ; -> Visible
 label-visible = %index%
 label-visible-foreground = ${colors.modfg}
+label-visible-background = ${colors.bg}
 label-visible-underline = ${colors.modfg}
 label-visible-padding = 4
 label-visible-margin = 1
@@ -103,7 +111,7 @@ date =  %b %d %l:%M %P
 interval = 5
 format-underline = ${colors.modfg}
 format-background = ${colors.bg}
-
+format-padding = 2
 
 [module/powermenu]
 type = custom/menu
@@ -159,7 +167,7 @@ bar-empty-foreground = #555
 type = internal/cpu
 interval = 2
 format-label = internal/cpu
-label = %{F${colors.fg}  %percentage%%%{F-}
+label = %{F${colors.fg}  %percentage%% %{F-}
 format = <label>
 padding = 2
 
@@ -180,7 +188,7 @@ ramp-coreload-underline = ${colors.fg}
 [module/memory]
 type = internal/memory
 interval = 2
-label = %{F${colors.white}  %percentage_used%%%{F-}
+label = %{F${colors.white}  %percentage_used%% %{F-}
 label-underline = ${colors.modfg}
 label-foreground = ${colors.fg}
 label-background = ${colors.bg}
@@ -208,14 +216,15 @@ type = internal/network
 interface = enp0s25
 interval = 3.0
 
-format-connected-padding = 1
-format-disconnected-padding = 1
-
 format-connected-underline = ${colors.white}
 format-disconnected-underline = ${colors.gray}
 
 label-connected = 
+label-connected-padding = 2
+label-connected-background = ${colors.bg}
 label-disconnected = 
+label-disconnected-padding = 2
+label-disconnected-background = ${colors.bg}
 label-disconnected-foreground = ${colors.gray}
 
 
@@ -253,6 +262,7 @@ type = custom/script
 exec = ~/.config/polybar/spotify.sh %artist% - %title%
 tail = true
 interval = 2
+format-foreground = ${colors.fg}
 
 
 [module/battery]

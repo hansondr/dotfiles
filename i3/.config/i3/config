@@ -173,7 +173,7 @@ for_window [class="^.*"] border normal 0
 
 smart_borders on
 gaps inner 4
-gaps outer 6
+gaps outer 4
 
 # Hacky attempt to use workspace bar block to init polybar
 bar {

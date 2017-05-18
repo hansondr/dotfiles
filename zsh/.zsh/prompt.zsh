@@ -1,9 +1,16 @@
-# modify the prompt to contain git branch name if applicable
-git_prompt_info() {
-  CURRENT_BRANCH=$(git current-branch 2> /dev/null)
-  if [[ -n $CURRENT_BRANCH ]]; then
-    echo " %{$fg_bold[green]%}$CURRENT_BRANCH%{$reset_color%}"
-  fi
-}
-setopt promptsubst
-PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
+POWERLEVEL9K_MODE="awesome-fontconfig"
+source ~/.zsh-themes/powerlevel9k/powerlevel9k.zsh-theme
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+POWERLEVEL9K_STATUS_VERBOSE=false
+POWERLEVEL9K_SHOW_CHANGESET=true
+POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status rbenv rspec_stats)
+
+# VCS color customization
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='042'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='101'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='104'
+
