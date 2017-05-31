@@ -10,30 +10,24 @@ red = #c795ae
 blue = #95aec7
 yellow = #c7ae95
 green = #aec795
-
+trans = #00FF00FF
 
 [bar/topbar]
 dpi = 192
 monitor = ${env:MONITOR:eDP-1}
-fixed-center = true
 
 width = 100%
 height = 3%
-radius = 0.0
-
-enable-ipc = false
-
-padding = 5
-
+padding = 1
 module-margin = 1
 
-background = ${colors.bg}
+background = ${colors.trans}
 foreground = ${colors.modfg}
 
 overline-size = 2
-overline-color = #{colors.white}
+overline-color = ${colors.white}
 underline-size = 4
-underline-color = #{colors.modfg}
+underline-color = ${colors.modfg}
 
 font-0 = xos4terminus:size=10;0
 font-1 = FontAwesome:size=12;0
@@ -71,26 +65,34 @@ label-visible-font = 1
 ; -> Focused
 label-focused = %index%
 label-focused-foreground = ${colors.white}
+label-focused-background = ${colors.bg}
 label-focused-underline = ${colors.white}
 label-focused-padding = 4
+label-focused-margin-right = 1
 
 ; -> Unfocused
 label-unfocused = %index%
 label-unfocused-padding = 4
 label-unfocused-foreground = ${colors.gray}
+label-unfocused-background = ${colors.bg}
 label-unfocused-underline = ${colors.gray}
+label-unfocused-margin-right = 1
 
 ; -> Urgent
 label-urgent = %index%
-label-urgent-underline = ${colors.red}
-label-urgent-foreground = ${colors.red}
+label-urgent-underline = #ff0000
+label-urgent-foreground = ${colors.white}
+label-urgent-background = ${colors.red}
 label-urgent-padding = 4
+label-urgent-margin-right = 1
 
 ; -> Visible
 label-visible = %index%
 label-visible-foreground = ${colors.modfg}
+label-visible-background = ${colors.bg}
 label-visible-underline = ${colors.modfg}
 label-visible-padding = 4
+label-visible-margin-right = 1
 
 
 [module/date]
@@ -109,7 +111,7 @@ type = custom/menu
 label-open = 
 label-open-foreground = #b63650
 label-close =
-
+label-separator = %{B}  %{B-}
 menu-0-0 =  shutdown
 menu-0-0-exec = shutdown now
 menu-0-1 =  restart
@@ -136,22 +138,26 @@ label-unmounted-foreground = ${colors.bg}
 
 [module/backlight]
 type = internal/backlight
-;output = ${env:MONITOR:eDP-1}
 card = intel_backlight
 
-format =   <bar> <label>
-label = %percentage%%
+format = <bar><label>
+format-padding = 4
+label = %{F} %{F-} %percentage%%
+label-background = ${colors.bg}
 
 bar-width = 10
 bar-indicator = 
 bar-indicator-foreground = ${colors.white}
+bar-indicator-background = ${colors.bg}
 bar-indicator-font = 2
 bar-fill = 
 bar-fill-font = 2
 bar-fill-foreground = #9f78e1
+bar-fill-background = ${colors.bg}
 bar-empty = 
 bar-empty-font = 2
 bar-empty-foreground = #555
+bar-empty-background = ${colors.bg}
 
 
 [module/cpu]
@@ -164,6 +170,7 @@ padding = 2
 
 label-underline = ${colors.modfg}
 label-background = ${colors.bg}
+label-padding = 1
 
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
@@ -183,51 +190,39 @@ label = %{F${colors.white}  %percentage_used%%%{F-}
 label-underline = ${colors.modfg}
 label-foreground = ${colors.fg}
 label-background = ${colors.bg}
-
+label-padding = 1
 
 [module/wlan]
 type = internal/network
 interface = wlp58s0
 interval = 3.0
 
-format-connected-padding = 1
-format-disconnected-padding = 1
-
 format-connected = <label-connected>
 format-connected-underline = ${colors.white}
 format-disconnected-underline = ${colors.gray}
 
 label-connected =  %essid%
+label-connected-background = ${colors.bg}
+label-connected-padding = 1
 label-disconnected = 
 label-disconnected-forground = ${colors.gray}
-
-
-[module/eth]
-type = internal/network
-interface = enp0s25
-interval = 3.0
-
-format-connected-padding = 1
-format-disconnected-padding = 1
-
-format-connected-underline = ${colors.white}
-format-disconnected-underline = ${colors.gray}
-
-label-connected = 
-label-disconnected = 
-label-disconnected-foreground = ${colors.gray}
+label-disconnected-background = ${colors.bg}
+label-disconnected-padding = 1
 
 
 [module/volume]
 type = internal/volume
-format-volume = <bar-volume>
+format-volume = <label-volume><bar-volume>
 format-muted = <label-muted>
 
-label-volume = 🔉
+label-volume = %{F${colors.white}   %{F-}
 label-volume-foreground = ${colors.white}
+label-volume-background = ${colors.bg}
 
-label-muted = 🔇 mute
+label-muted = muted
+label-muted-padding = 1
 label-muted-foreground = ${colors.gray}
+label-muted-background = ${colors.bg}
 
 bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.green}
@@ -240,11 +235,14 @@ bar-volume-gradient = false
 bar-volume-indicator = 
 bar-volume-indicator-font = 4
 bar-volume-indicator-foreground = ${colors.white}
+bar-volume-indicator-background = ${colors.bg}
 bar-volume-fill = 
 bar-volume-fill-font = 4
+bar-volume-fill-background = ${colors.bg}
 bar-volume-empty = 
 bar-volume-empty-font = 4
 bar-volume-empty-foreground = ${colors.gray}
+bar-volume-empty-background = ${colors.bg}
 
 
 [module/battery]
@@ -256,15 +254,18 @@ full-at = 98
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.green}
 format-charging-padding = 1
+format-charging-background = ${colors.bg}
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${colors.yellow}
 format-discharging-padding = 1
+format-discharging-background = ${colors.bg}
 
 format-full =   <label-full>
 format-full-underline = ${self.format-charging-underline}
 format-full-overline = ${self.format-charging-underline}
 format-full-padding = 1
+format-full-background = ${colors.bg}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 

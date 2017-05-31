@@ -172,7 +172,7 @@ client.background       $bg
 for_window [class="^.*"] border normal 0
 
 smart_borders on
-gaps inner 4
+gaps inner 6
 gaps outer 6
 
 # Media Keys
