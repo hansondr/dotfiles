@@ -262,7 +262,11 @@ type = custom/script
 exec = ~/.config/polybar/spotify.sh %artist% - %title%
 tail = true
 interval = 2
+format = ♫ <label> ♫
 format-foreground = ${colors.fg}
+format-background = ${colors.bg}
+format-padding = 1
+format-underline = ${colors.white}
 
 
 [module/battery]

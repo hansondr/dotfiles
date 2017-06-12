@@ -12,6 +12,9 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:System San Francisco Display 10
 
+# Experimental removal of window title bars
+for_window [class="^.*"] border pixel 1
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -169,7 +172,7 @@ client.placeholder      $bg     $bg     $fg   $bg       $bg
 client.background       $bg
 
 # Add a 5px border to all windows
-for_window [class="^.*"] border normal 0
+#for_window [class="^.*"] border normal 0
 
 smart_borders on
 gaps inner 4
