@@ -27,9 +27,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
 Plug 'dylanaraps/wal'
 Plug 'jamshedvesuna/vim-markdown-preview'
-
-" Salesforce
-Plug 'neowit/vim-force.com'
+Plug 'gcorne/vim-sass-lint'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

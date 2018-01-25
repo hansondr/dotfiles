@@ -7,24 +7,3 @@ Xft.hinting: true
 Xft.hintstyle: hintslight
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
-
-! Disable scrollbar
-URxvt.scrollBar: false
-
-! Set terminal padding
-URxvt.internalBorder: 15
-
-! Set Font
-URxvt.font: xft:Hack:pixelsize=12
-URxvt.boldFont: xft:Hack Bold:pixelsize=12
-
-! Enable copy/paste with Ctrl-Shift-C/V
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-URxvt.perl-ext-common: default,clipboard
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-
-! Colors {{{
-
-! }}}

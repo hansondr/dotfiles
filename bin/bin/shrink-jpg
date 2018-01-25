@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if [ $# != 1 ]; then
+  echo "Please include a JPG image to shrink";
+  exit -1;
+fi
+
+if [[ ( $1 != *.jpg ) && ( $1 != *.jpeg ) ]]; then
+  echo "Please include a JPG image to shrink";
+  exit -1;
+fi
+
+dir=$(dirname $1)
+filename=$(basename $1)
+output_filename=$(echo "${filename%%.*}_compressed.${filename#*.}")
+echo $PATH
+$(jpeg-recompress --quality high --accurate --method smallfry --min 60 $1 $output_filename)

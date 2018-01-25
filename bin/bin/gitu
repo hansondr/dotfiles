@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+
+git checkout master
+git fetch --all --tags --prune
+git pull
