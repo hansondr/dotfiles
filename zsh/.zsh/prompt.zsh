@@ -1,5 +1,4 @@
 POWERLEVEL9K_MODE="awesome-fontconfig"
-source ~/.zsh-themes/powerlevel9k/powerlevel9k.zsh-theme
 
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
@@ -14,3 +13,4 @@ POWERLEVEL9K_VCS_CLEAN_BACKGROUND='042'
 POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='101'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='104'
 
+source ~/.zsh-themes/powerlevel9k/powerlevel9k.zsh-theme
