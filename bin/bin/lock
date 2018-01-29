@@ -13,6 +13,10 @@ done
 TMPBG=/tmp/screen.png
 scrot $TMPBG && convert $TMPBG -scale 5% -scale 2000% -draw "fill black fill-opacity 0.4 $rectangles" $TMPBG
 
+# Pause Spotify if playing
+spotifyctl stop
+
+# Display Lock
 i3lock \
   -i $TMPBG \
   --timepos="x+130:h-120" \

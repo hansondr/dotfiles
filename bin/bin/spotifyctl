@@ -10,7 +10,10 @@ next)
 prev)
   dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
   ;;
+stop)
+  dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
+  ;;
 *)
-  echo "please pass an action (playpause|next|prev)"
+  echo "please pass an action (playpause|next|prev|stop)"
   ;;
 esac
