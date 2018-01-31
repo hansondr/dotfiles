@@ -13,4 +13,4 @@ stow zsh
 stow bin
 #stow browser
 stow rbenv
-#stow polybar
+stow polybar
