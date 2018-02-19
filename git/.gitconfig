@@ -26,5 +26,5 @@
 [include]
   path = ~/.gitconfig.local
 [user]
-	email = hansondr@gmail.com
-	name = Daniel Hanson
+  email = hansondr@gmail.com
+  name = Daniel Hanson
