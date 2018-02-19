@@ -25,10 +25,9 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+q kill
 
 # lock the screen
-#bindsym $mod+x exec i3lock -i "${HOME}/.cache/wallpaper/blurred.png"
 bindsym $mod+x exec lock
 
-bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 50 -font "System San Francisco Display 18"
+bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 50 -font "Ubuntu Mono 16"
 
 # change focus
 bindsym $mod+h focus left
@@ -193,7 +192,7 @@ bindsym XF86AudioPrev exec "spotifyctl prev"
 bindsym $mod+c move position center
 
 # Cycle wallpapers
-bindsym $mod+w exec "wal -i $HOME/Pictures/Wallpapers -t -o wal-set"
+# bindsym $mod+w exec "wal -i $HOME/Pictures/Wallpapers -t -o wal-set"
 
 # Background Processes
 # handled in ~/.xinitrc

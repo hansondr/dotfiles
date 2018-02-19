@@ -9,8 +9,8 @@ stow vim
 stow x
 stow zsh
 #stow compton
-#stow dunst
+stow dunst
 stow bin
-#stow browser
+stow browser
 stow rbenv
 stow polybar

@@ -1,7 +1,6 @@
 # vim: ft=cfg
 [global]
-  #font = "System San Francisco Display Regular 13"
-  font = xos4 Terminus Regular 8
+  font = "Ubuntu Mono 11"
 
   allow_markup = no
   plain_text = no
@@ -15,6 +14,10 @@
   # %p progress value if set ([  0%] to [100%]) or nothing
   # Markup is allowed if enabled
   format = "%s\n%b"
+
+  # Visuals
+  frame_width = 3
+  frame_color = "#ff0000"
 
   # Sort by urgency
   sort = yes
@@ -59,9 +62,6 @@
 
   # Paths to default icons
   icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-
-[frame]
-  width = 0
 
 [shortcuts]
   # Shortcuts are specified as [modifier+][modifier+]..key
