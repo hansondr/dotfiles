@@ -25,8 +25,8 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
-Plug 'dylanaraps/wal'
-Plug 'jamshedvesuna/vim-markdown-preview'
+" Plug 'dylanaraps/wal'
+Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'gcorne/vim-sass-lint'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
