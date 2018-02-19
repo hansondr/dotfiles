@@ -119,12 +119,12 @@ label-song-ellipsis = true
 [module/cpu]
 type = internal/cpu
 interval = 2
-label = %{F#333333 B#f0f0f0} CPU %{F- B-}%{F#f0f0f0 B#6d8ec1} %percentage:2%% %{F- B-}
+label = %{F#333333 B#f0f0f0}  %{F- B-}%{F#f0f0f0 B#6d8ec1} %percentage:2%% %{F- B-}
 
 [module/memory]
 type = internal/memory
 interval = 2
-label = %{F#333333 B#f0f0f0} Mem %{F- B-}%{F#f0f0f0 B#6d8ec1} %percentage_used%% %{F- B-}
+label = %{F#333333 B#f0f0f0}  %{F- B-}%{F#f0f0f0 B#6d8ec1} %percentage_used%% %{F- B-}
 
 [module/wlan]
 type = internal/network
