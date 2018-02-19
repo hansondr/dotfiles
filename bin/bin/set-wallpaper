@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+wallpaper="$HOME/Pictures/coast.jpg"
+
+if [ -f $wallpaper ]; then
+  feh --bg-scale $wallpaper
+fi
