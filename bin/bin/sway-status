@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'json'
+
+class StatusBar
+  def initialize(*sections)
+    @sections = sections
+  end
+
+  def to_s
+    output = ''
+    @sections.each do |section|
+      output += section.output
+    end
+
+    output
+  end
+end
+
+class DateSection
+  def initialize
+    @datetime = Time.now.strftime('%b %d - %-I:%M %p')
+  end
+
+  def output
+    @datetime
+  end
+end
+
+puts StatusBar.new(DateSection.new)

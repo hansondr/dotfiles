@@ -56,32 +56,21 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
+" Softtabs by file type
+"autocmd FileType rs setlocal shiftwidth=4 tabstop=4
+
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files.  Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
-  endif
-endif
 
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1
+" Don't auto line break when we hit the textwidth indicator
+set formatoptions-=t
 
 " Numbers
 set number
@@ -103,22 +92,6 @@ endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <S-Tab> <c-n>
 
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "User l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
-" vim-test mappings
-nnoremap <silent> <Leader>t :TestFile<CR>
-nnoremap <silent> <Leader>s :TestNearest<CR>
-nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>a :TestSuite<CR>
-nnoremap <silent> <Leader>gt :TestVisit<CR>
-
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
 
@@ -129,22 +102,8 @@ let g:html_indent_tags = 'li\|p'
 set splitbelow
 set splitright
 
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
 " Always use vertical diffs
 set diffopt+=vertical
-
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_eruby_ruby_quiet_messages =
-    \ {"regex": "possibly useless use of a variable in void context"}
-let g:syntastic_scss_checkers=["sasslint"]
-let g:syntastic_sass_checkers=["sasslint"]
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git
@@ -153,7 +112,26 @@ set spellfile=$HOME/.vim-spell-en.utf-8.add
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell
 
+" Rust Specific
+nmap <F8> :TagbarToggle<CR>
+nmap <F3> :RustRun<CR>
+
 " Local config
+runtime! mappings/**/*.vim
+runtime! plugin_settings/**/*.vim
+
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+" Color theme
+"if (has("termguicolors"))
+"  set termguicolors
+"endif
+if !has('gui_running')
+  set t_Co=256
+endif
+set laststatus=2
+syntax enable
+colorscheme tender
+let g:lightline = { 'colorscheme': 'tender' }

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cvlc --video-wallpaper --no-embedded-video --no-video-on-top --overlay --no-video-title-show --loop --quiet ~/Videos/windy_field.mp4

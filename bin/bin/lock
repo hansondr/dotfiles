@@ -1,32 +1,25 @@
 #!/usr/bin/env bash
 
-rectangles=" "
+pause () {
+  notify-send "DUNST_COMMAND_PAUSE"
+  spotifyctl stop 2> /dev/null
+}
 
-SR=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
-for RES in $SR; do
-  SRA=(${RES//[x+]/ })
-  CX=$((${SRA[2]} + 25))
-  CY=$((${SRA[1]} - 80))
-  rectangles+="rectangle $CX,$CY $((CX+300)),$((CY-80)) "
-done
+resume () {
+  #spotifyctl playpause 2> /dev/null
+  notify-send "DUNST_COMMAND_RESUME"
+}
 
-TMPBG=/tmp/screen.png
-scrot $TMPBG && convert $TMPBG -scale 5% -scale 2000% -draw "fill black fill-opacity 0.4 $rectangles" $TMPBG
+pause
 
-# Pause Spotify if playing
-spotifyctl stop
+# Corrupted version of wallpaper only
+# NOTE: Requires corrupter binary and imagemagick for png conversion
+if [ -e ~/.wallpaper ]; then
+  if ! md5sum -c ~/.cache/wallpaper.md5 || [ ! -e ~/.cache/wallpaper-corrupted.png ]; then
+    md5sum ~/.wallpaper > ~/.cache/wallpaper.md5
+    convert $(realpath ~/.wallpaper) ~/.cache/wallpaper-corrupted.png
+    corrupter -mag 3 -boffset 20 -bheight 7  ~/.cache/wallpaper-corrupted.png ~/.cache/wallpaper-corrupted.png
+  fi
+fi
 
-# Display Lock
-i3lock \
-  -i $TMPBG \
-  --timepos="x+130:h-120" \
-  --timestr "%-I:%M %p" \
-  --clock --datestr "Type password to unlock..." \
-  --insidecolor=00000000 --ringcolor=ffffffff --line-uses-inside \
-  --keyhlcolor=d23c3dff --bshlcolor=d23c3dff --separatorcolor=00000000 \
-  --insidevercolor=fecf4dff --insidewrongcolor=d23c3dff \
-  --ringvercolor=ffffffff --ringwrongcolor=ffffffff --indpos="x+290:h-120" \
-  --radius=20 --ring-width=3 --veriftext="" --wrongtext="" \
-  --layoutcolor="ffffffff" --timecolor="ffffffff" --datecolor="ffffffff"
-
-rm $TMPBG
+i3lock -c 000000 -t -i ~/.cache/wallpaper-corrupted.png -n; resume

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  echo 'Please supply a giphy URL'
+  exit 1
+fi
+
+url=$1
+
+if [ $# -eq 2 ]; then
+  output=$2
+else
+  output='unspecified'
+fi
+
+# https://giphy.com/gifs/dvTHf0UjkeFzRu7BWi/media
+# to
+# https://media.giphy.com/media/dvTHf0UjkeFzRu7BWi/source.gif
+
+giphyid=$(echo "$url" | sed -rn 's;^.*gifs/([^/]*)/.*$;\1;p')
+gifurl="https://media.giphy.com/media/$giphyid/source.gif"
+outputgif=~/tmp/$output.gif
+
+echo "Downloading gif: $gifurl"
+wget $gifurl -q --output-document=$outputgif --show-progress && echo "saved to $outputgif"
+

@@ -5,9 +5,13 @@ end
 call plug#begin('~/.vim/plugged')
 
 " Define bundles via Github repos
+Plug 'jacoborus/tender.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'pangloss/vim-javascript'
 Plug 'christoomey/vim-run-interactive'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'janko-m/vim-test'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'scrooloose/syntastic'
@@ -23,8 +27,12 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
-Plug 'JamshedVesuna/vim-markdown-preview'
+" Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'gcorne/vim-sass-lint'
+
+Plug 'rust-lang/rust.vim'
+Plug 'majutsushi/tagbar'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

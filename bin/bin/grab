@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-scrot -c -d5 '/tmp/%F_%H%M%S_screenshot.png'
+# scrot -c -d5 '/tmp/%F_%H%M%S_screenshot.png'
+scrot -s -d1 '/tmp/%F_%H%M%S_screenshot.png'

@@ -1,0 +1,114 @@
+[global/wm]
+margin-bottom = 0
+margin-top = 0
+
+include-file = ~/.config/polybar/colors.ini
+include-file = ~/.config/polybar/modules.ini
+include-file = ~/.config/polybar/user_modules.ini
+include-file = ~/.config/polybar/bars.ini
+
+[bar/main]
+background = ${color.bg}
+fixed-center = true
+foreground = ${color.fg}
+height = 22
+module-margin-left = 0
+module-margin-right = 0
+offset-x = 0%
+offset-y = 0%
+overline-size = 2
+overline-color = ${color.ac}
+padding = 0
+radius-top = 0.0
+radius-bottom = 0.0
+width = 100%
+
+; Text fonts
+font-0 = Iosevka Font:style=Medium:size=10;3
+
+; Icon fonts
+font-1 = icomoon\-feather:style=Medium:size=10;3
+
+; Powerline Glyphs
+font-2 = Iosevka Font:style=Medium:size=22;3
+
+; Larger font size for bar fill icons
+font-3 = Iosevka Font:style=Medium:size=12;3
+
+; Smaller font size for shorter spaces
+font-4 = Iosevka Font:style=Medium:size=7;3
+
+[bar/left]
+inherit = bar/main
+monitor = ${env:MONITOR:HDMI-1}
+modules-left = i3 right-end-top
+modules-right = left-end-top spotify alsa right-end-bottom left-end-top memory_bar cpu_bar right-end-bottom left-end-top date
+enable-ipc = true
+
+[bar/right]
+inherit = bar/main
+monitor = ${env:MONITOR:HDMI-2}
+modules-left = i3 right-end-top
+modules-right = left-end-top alsa right-end-bottom left-end-top date
+enable-ipc = true
+
+;; Layout
+[layout]
+module-padding = 1
+
+
+;; Bars
+icon-font = 2
+bar-format = %{T4}%fill%%indicator%%empty%%{F-}%{T-}
+bar-fill-icon = "▰"
+
+separator =
+spacing = 0
+dim-value = 1.0
+wm-name =
+tray-position = none
+tray-detached = false
+tray-maxsize = 16
+tray-transparent = false
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 0
+tray-scale = 1.0
+
+; Fallback click handlers that will be called if no matching module handler
+click-left =
+click-middle =
+click-right = 
+scroll-up =
+scroll-down =
+double-click-left =
+double-click-middle =
+double-click-right =
+
+cursor-click =
+cursor-scroll =
+
+
+;; Application Settings
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+screenchange-reload = false
+compositing-background = source
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+; define fallback values
+format-foreground =
+format-background =
+format-underline =
+format-overline =
+format-spacing =
+format-padding =
+format-margin =
+format-offset =
+
+pseudo-transparency = false

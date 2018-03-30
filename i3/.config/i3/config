@@ -1,25 +1,30 @@
 # Set colors from Xresources
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $fg-cta i3wm.color4 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
-
-set $monL HDMI-1
-set $monR HDMI-2
+set_from_resource $bg i3wm.color0 #f0f0f0
+set_from_resource $border-focused i3wm.color2 #7851a9
+set_from_resource $border-indicator i3wm.color2 #9677be
+set_from_resource $border i3wm.color0 #333333
+set_from_resource $monL MonitorLeft
+set_from_resource $monR MonitorRight
 
 set $mod Mod4
+set $wallpaper ~/.wallpaper
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Droid Sans Mono 10
+font pango:Iosevka Term 12
 
 # Experimental removal of window title bars
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec urxvt
+#bindsym $mod+Return exec gnome-terminal
+#bindsym $mod+Return exec cool-retro-term --profile ~/.config/cool-retro-term/themes/minimal.json
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -27,7 +32,8 @@ bindsym $mod+Shift+q kill
 # lock the screen
 bindsym $mod+x exec lock
 
-bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 50 -font "Ubuntu Mono 16"
+#bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 50 -font "Ubuntu Mono 16"
+bindsym $mod+d exec rofi -show run
 
 # change focus
 bindsym $mod+h focus left
@@ -64,6 +70,10 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s floating toggle
+
+# hacky float resize
+for_window [floating] resize set 80 ppt 80 ppt, move position center
+bindsym $mod+Shift+s [floating] resize set 80 ppt 80 ppt, move position center
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -163,25 +173,24 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Window Colors
-#                       border  backgr  text  indicator child_border
-client.focused          $bg     $bg     $fg   $bg       $bg
-client.focused_inactive $bg     $bg     $fg   $bg       $bg
-client.unfocused        $bg     $bg     $fg   $bg       $bg
-client.urgent           $bg     $bg     $fg   $bg       $bg
-client.placeholder      $bg     $bg     $fg   $bg       $bg
+#                       border  backgr  text  indicator         child_border
+client.focused          $bg     $bg     $fg   $border-indicator $border-focused
+client.focused_inactive $bg     $bg     $fg   $border           $border
+client.unfocused        $bg     $bg     $fg   $border           $border
+client.urgent           $bg     $bg     $fg   $border           $border
+client.placeholder      $bg     $bg     $fg   $border           $border
 client.background       $bg
 
-smart_borders on
-gaps inner 4
-gaps outer 4
+#smart_gaps off
+gaps inner 8
 
 # Media Keys
 # Pulse Audio controls
 # Auto set volume to reasonable level on start up
-exec --no-startup-id pactl set-sink-volume 0 40%
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Media player controls
 bindsym XF86AudioPlay exec "spotifyctl playpause"
@@ -198,6 +207,7 @@ bindsym $mod+c move position center
 # handled in ~/.xinitrc
 
 # Foreground Processes
-exec spotify
+# exec spotify
 exec slack
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id feh --bg-fill $wallpaper

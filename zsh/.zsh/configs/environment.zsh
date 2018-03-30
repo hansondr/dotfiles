@@ -1,7 +1,3 @@
-# editors
-export EDITOR=vim
-export VISUAL=vim
-
 # language
 #export LC_COLLATE=en_US.UTF-8
 #export LC_CTYPE=en_US.UTF-8
@@ -13,3 +9,4 @@ export VISUAL=vim
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US
 #export LESSCHARSET=en_US.UTF-8
+export TERM=xterm-256color

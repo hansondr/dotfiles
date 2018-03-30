@@ -9,19 +9,21 @@
 
 
 [colors]
-background = #2b2c33
-background-alt = #6d8ec1
-foreground = #f0f0f0
-foreground-alt = #555
+;background = #00000000
+background = #990b152e
+;background-alt = #c9b9de
+background-alt = #ff4701
+foreground = #ffca02
+;foreground-alt = #ffec3d
+foreground-alt = #ff4701
 alert = #bd2c40
 
 [section/base]
-font-0 = "Ubuntu Mono:size=11;2"
-font-1 = "FontAwesome:pixelsize=11;2"
+font-0 = "Iosevka Term:size=10;1"
+font-1 = "FontAwesome:pixelsize=12;2"
 width = 100%
 height = 24
 radius = 0.0
-fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 line-size = 0
@@ -41,17 +43,17 @@ cursor-scroll = ns-resize
 
 [bar/left]
 inherit = section/base
-monitor = ${env:MONITOR:HDMI-1}
+monitor = ${xrdb:MonitorLeft}
 modules-left = i3
-modules-center = xwindow
-modules-right = spotify volume memory cpu date
+modules-center = spotify
+modules-right = volume memory cpu date
 
 [bar/right]
 inherit = section/base
-monitor = ${env:MONITOR:HDMI-2}
+monitor = ${xrdb:MonitorRight}
 modules-left = i3
-modules-center = xwindow
-modules-right = spotify volume date
+modules-center =
+modules-right = volume date
 
 
 
@@ -79,24 +81,26 @@ wrapping-scroll = false
 pin-workspaces = true
 
 label-mode-padding = 1
-label-mode-foreground = #000
-label-mode-background = ${colors.foreground}
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
+label-focused-foreground = ${colors.foreground}
 label-focused-background = ${colors.background-alt}
 label-focused-padding = ${self.label-mode-padding}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-background = ${colors.foreground}
-label-unfocused-foreground = ${colors.background}
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-background = ${colors.background}
 label-unfocused-padding = ${self.label-mode-padding}
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
 label-visible-padding = ${self.label-focused-padding}
-label-visible-background = ${self.label-focused-background}
+label-visible-foreground = ${colors.foreground-alt}
+label-visible-background = ${colors.background}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
@@ -119,12 +123,12 @@ label-song-ellipsis = true
 [module/cpu]
 type = internal/cpu
 interval = 2
-label = %{F#333333 B#f0f0f0}  %{F- B-}%{F#f0f0f0 B#6d8ec1} %percentage:2%% %{F- B-}
+label =   %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-label = %{F#333333 B#f0f0f0}  %{F- B-}%{F#f0f0f0 B#6d8ec1} %percentage_used%% %{F- B-}
+label =   %percentage_used%%
 
 [module/wlan]
 type = internal/network
@@ -181,20 +185,20 @@ format-underline = #0a6cf5
 label = %date% %time%
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 format-volume = <label-volume>
-label-volume = %{F#333333 B#f0f0f0}  %{F- B-}%{F#f0f0f0 B#6d8ec1} %percentage%% %{F- B-}
+label-volume =  %percentage%%
 label-volume-font = 1
 
-label-muted = %{F#333333 B#f0f0f0}   %{F- B-}%{F#f0f0f0 B#6d8ec1}  0% %{F- B-}
+label-muted =  0%
 
 [module/spotify]
 type = custom/script
 exec = $HOME/.config/polybar/spotify.sh
 interval = 10
 format = <label>
-label = %{F#333333 B#f0f0f0}  %{F- B-}%{F#f0f0f0 B#6d8ec1} %output% %{F- B-}
+label =   %output%
 label-font = 1
 
 [settings]

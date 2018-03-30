@@ -3,3 +3,5 @@ vim/bundle
 vim/.vim/plugged
 vim/.vim/.netrwhist
 browser/.config/browser/startpage/style.css
+zsh/.zsh/configs/afc-dev.zsh
+zsh/.zsh/configs/ping-dev.zsh
