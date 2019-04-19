@@ -23,14 +23,14 @@ if [ ! -d ~/src ]; then
   mkdir ~/src
 fi
 cd ~/src
-git clone https://github.com/Cloudef/wlc.git > /dev/null
+git clone https://github.com/Cloudef/wlc.git
 cd wlc
-git submodule update --init --recursive > /dev/null
+git submodule update --init --recursive
 mkdir target
 cd target
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DSOURCE_WLPROTO=ON .. > /dev/null
-make > /dev/null
-sudo make install > /dev/null
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DSOURCE_WLPROTO=ON ..
+make
+sudo make install
 
 
 echo '[apt] installing Sway dependencies...'
@@ -43,34 +43,34 @@ sudo apt install -qq -y autoconf automake libtool
 
 echo '[git] building and installing libjson-c (Sway requires >= 0.13 and disco apt only includes version 0.12x)'
 cd ~/src
-git clone https://github.com/json-c/json-c.git > /dev/null
+git clone https://github.com/json-c/json-c.git
 cd json-c
-git checkout json-c-0.13 > /dev/null
-sh autogen.sh > /dev/null
-./configure > /dev/null
-make > /dev/null
-sudo make install > /dev/null
+git checkout json-c-0.13
+sh autogen.sh
+./configure
+make
+sudo make install
 export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib/x86_64-linux-gnu
 
 
 echo '[git] install wlroots (Sway 1.0 recommends version 0.5.0)...'
 cd ~/src
-git clone https://github.com/swaywm/wlroots.git > /dev/null
+git clone https://github.com/swaywm/wlroots.git
 cd wlroots
-git checkout 0.5.0 > /dev/null
-meson build > /dev/null
-ninja -C build > /dev/null
-sudo ninja -C build install > /dev/null
+git checkout 0.5.0
+meson build
+ninja -C build
+sudo ninja -C build install
 
 
 echo '[git] install Sway 1.0'
 cd ~/src
-git clone https://github.com/swaywm/sway.git > /dev/null
+git clone https://github.com/swaywm/sway.git
 cd sway
-git checkout 1.0 > /dev/null
-meson build > /dev/null
-ninja -C build > /dev/null
-sudo ninja -C build install > /dev/null
+git checkout 1.0
+meson build
+ninja -C build
+sudo ninja -C build install
 
 
 echo '[bash] copy over default Sway config...'
@@ -80,7 +80,7 @@ echo 'Default config located at ~/.config/sway/config'
 
 
 echo
-read -p 'Sway expects the urxvt terminal by default, would you like to install it?' -n 1 -r
+read -p 'Sway expects the urxvt terminal by default, would you like to install it? ' -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
