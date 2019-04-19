@@ -50,7 +50,7 @@ sh autogen.sh
 ./configure
 make
 sudo make install
-export LD_LIBRARY_PATH=/usr/local/lib
+export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib/x86_64-linux-gnu
 
 
 echo '[git] install wlroots (Sway 1.0 recommends version 0.5.0)...'
