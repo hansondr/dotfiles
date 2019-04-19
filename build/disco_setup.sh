@@ -25,6 +25,7 @@ fi
 cd ~/src
 git clone https://github.com/Cloudef/wlc.git
 cd wlc
+git submodule update --init --recursive
 mkdir target
 cd target
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DSOURCE_WLPROTO=ON ..
