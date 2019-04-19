@@ -80,6 +80,32 @@ echo 'Default config located at ~/.config/sway/config'
 
 
 echo
+read -p 'Would you like to install the termite terminal? (y/n) ' -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  echo '[apt] installing Termite dependencies...'
+  sudo apt install -qq -y g++ libgtk-3-dev gtk-doc-tools gnutls-bin valac intltool libpcre2-dev libglib3.0-cil-dev libgnutls28-dev libgirepository1.0-dev libxml2-utils gperf
+
+  echo '[git] install vte-ng...'
+  cd ~/src
+  git clone https://github.com/thestinger/vte-ng.git
+  export LIBRARY_PATH="/usr/include/gtk-3.0:$LIBRARY_PATH"
+  cd vte-ng
+  ./autogen.sh
+  make && sudo make install
+
+  echo '[git] install Termite'
+  cd ~/src
+  git clone --recursive https://github.com/thestinger/termite.git
+  cd termite
+  make && sudo make install
+
+  echo 'Termite has been installed!  Remember to edit your Sway config to set this as your term'
+fi
+
+
+echo
 read -p 'Sway expects the urxvt terminal by default, would you like to install it? ' -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
