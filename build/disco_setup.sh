@@ -11,11 +11,11 @@ then
 fi
 
 echo '[apt] installing Wayland and dependencies...'
-sudo apt install -qq libgles2-mesa-dev libdrm2 libdrm-dev libegl1-mesa-dev xwayland
+sudo apt install -qq -y libgles2-mesa-dev libdrm2 libdrm-dev libegl1-mesa-dev xwayland
 
 
 echo '[apt] installing Wlc dependencies...'
-sudo apt install -qq cmake build-essential libinput10 libinput-dev libxkbcommon0 libxkbcommon-dev libudev-dev libxcb-image0 libxcb-image0-dev libxcb-composite0 libxcb-composite0-dev libxcb-xkb1 libxcb-xkb-dev libgbm1 libgbm-dev libdbus-1-dev libsystemd-dev zlib1g-dev libpixman-1-dev libxcb-ewmh-dev wayland-protocols git
+sudo apt install -qq -y cmake build-essential libinput10 libinput-dev libxkbcommon0 libxkbcommon-dev libudev-dev libxcb-image0 libxcb-image0-dev libxcb-composite0 libxcb-composite0-dev libxcb-xkb1 libxcb-xkb-dev libgbm1 libgbm-dev libdbus-1-dev libsystemd-dev zlib1g-dev libpixman-1-dev libxcb-ewmh-dev wayland-protocols git
 
 
 echo '[git] building and installing Wlc...'
@@ -23,54 +23,54 @@ if [ ! -d ~/src ]; then
   mkdir ~/src
 fi
 cd ~/src
-git clone https://github.com/Cloudef/wlc.git
+git clone https://github.com/Cloudef/wlc.git > /dev/null
 cd wlc
-git submodule update --init --recursive
+git submodule update --init --recursive > /dev/null
 mkdir target
 cd target
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DSOURCE_WLPROTO=ON ..
-make
-sudo make install
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DSOURCE_WLPROTO=ON .. > /dev/null
+make > /dev/null
+sudo make install > /dev/null
 
 
 echo '[apt] installing Sway dependencies...'
-sudo apt install -qq meson libelogind-dev libpcre3 libpcre3-dev libcairo2 libcairo2-dev libpango1.0-0 libpango1.0-dev asciidoc libcap-dev xsltproc libpam0g-dev libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-dev
+sudo apt install -qq -y meson libelogind-dev libpcre3 libpcre3-dev libcairo2 libcairo2-dev libpango1.0-0 libpango1.0-dev asciidoc libcap-dev xsltproc libpam0g-dev libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-dev
 
 
 echo '[apt] installing build tools...'
-sudo apt install -y autoconf automake libtool
+sudo apt install -qq -y autoconf automake libtool
 
 
 echo '[git] building and installing libjson-c (Sway requires >= 0.13 and disco apt only includes version 0.12x)'
 cd ~/src
-git clone https://github.com/json-c/json-c.git
+git clone https://github.com/json-c/json-c.git > /dev/null
 cd json-c
-git checkout json-c-0.13
-sh autogen.sh
-./configure
-make
-sudo make install
+git checkout json-c-0.13 > /dev/null
+sh autogen.sh > /dev/null
+./configure > /dev/null
+make > /dev/null
+sudo make install > /dev/null
 export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib/x86_64-linux-gnu
 
 
 echo '[git] install wlroots (Sway 1.0 recommends version 0.5.0)...'
 cd ~/src
-git clone https://github.com/swaywm/wlroots.git
+git clone https://github.com/swaywm/wlroots.git > /dev/null
 cd wlroots
-git checkout 0.5.0
-meson build
-ninja -C build
-sudo ninja -C build install
+git checkout 0.5.0 > /dev/null
+meson build > /dev/null
+ninja -C build > /dev/null
+sudo ninja -C build install > /dev/null
 
 
 echo '[git] install Sway 1.0'
 cd ~/src
-git clone https://github.com/swaywm/sway.git
+git clone https://github.com/swaywm/sway.git > /dev/null
 cd sway
-git checkout 1.0
-meson build
-ninja -C build
-sudo ninja -C build install
+git checkout 1.0 > /dev/null
+meson build > /dev/null
+ninja -C build > /dev/null
+sudo ninja -C build install > /dev/null
 
 
 echo '[bash] copy over default Sway config...'
@@ -84,7 +84,7 @@ read -p 'Sway expects the urxvt terminal by default, would you like to install i
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  sudo apt install -qq rxvt-unicode
+  sudo apt install -qq -y rxvt-unicode && echo 'urxvt installed.'
 fi
 
 echo
