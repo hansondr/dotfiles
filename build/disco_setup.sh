@@ -11,11 +11,11 @@ then
 fi
 
 echo '[apt] installing Wayland and dependencies...'
-sudo apt install -y libgles2-mesa-dev libdrm2 libdrm-dev libegl1-mesa-dev xwayland
+sudo apt install -qq libgles2-mesa-dev libdrm2 libdrm-dev libegl1-mesa-dev xwayland
 
 
 echo '[apt] installing Wlc dependencies...'
-sudo apt install -y cmake build-essential libinput10 libinput-dev libxkbcommon0 libxkbcommon-dev libudev-dev libxcb-image0 libxcb-image0-dev libxcb-composite0 libxcb-composite0-dev libxcb-xkb1 libxcb-xkb-dev libgbm1 libgbm-dev libdbus-1-dev libsystemd-dev zlib1g-dev libpixman-1-dev libxcb-ewmh-dev wayland-protocols git
+sudo apt install -qq cmake build-essential libinput10 libinput-dev libxkbcommon0 libxkbcommon-dev libudev-dev libxcb-image0 libxcb-image0-dev libxcb-composite0 libxcb-composite0-dev libxcb-xkb1 libxcb-xkb-dev libgbm1 libgbm-dev libdbus-1-dev libsystemd-dev zlib1g-dev libpixman-1-dev libxcb-ewmh-dev wayland-protocols git
 
 
 echo '[git] building and installing Wlc...'
@@ -34,7 +34,7 @@ sudo make install
 
 
 echo '[apt] installing Sway dependencies...'
-sudo apt install -y meson libelogind-dev libpcre3 libpcre3-dev libcairo2 libcairo2-dev libpango1.0-0 libpango1.0-dev asciidoc libcap-dev xsltproc libpam0g-dev libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-dev
+sudo apt install -qq meson libelogind-dev libpcre3 libpcre3-dev libcairo2 libcairo2-dev libpango1.0-0 libpango1.0-dev asciidoc libcap-dev xsltproc libpam0g-dev libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-dev
 
 
 echo '[apt] installing build tools...'
