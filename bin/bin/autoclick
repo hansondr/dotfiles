@@ -1,0 +1,9 @@
+#!/bin/sh
+
+trap exit SIGINT
+echo "Caps-lock clicker == Ctrl+C to exit"
+while true
+do
+  xset -q | grep "Caps Lock:   on" >/dev/null && xdotool click 1 && echo "."
+  sleep 0.015
+done
