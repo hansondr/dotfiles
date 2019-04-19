@@ -4,6 +4,7 @@ echo
 echo 'Setup Disco Dingo (19.xx) Server install'
 echo
 read -p 'Would you like to continue? ' -n 1 -r
+echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
   [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
@@ -32,9 +33,7 @@ sudo make install
 
 
 echo '[apt] installing Sway dependencies...'
-sudo apt install -y meson libelogind-dev libpcre3 libpcre3-dev libcairo2
-libcairo2-dev libpango1.0-0 libpango1.0-dev asciidoc libcap-dev xsltproc
-libpam0g-dev libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-dev
+sudo apt install -y meson libelogind-dev libpcre3 libpcre3-dev libcairo2 libcairo2-dev libpango1.0-0 libpango1.0-dev asciidoc libcap-dev xsltproc libpam0g-dev libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-dev
 
 
 echo '[apt] installing build tools...'
@@ -75,4 +74,3 @@ sudo ninja -C build install
 echo
 echo 'Setup complete!'
 echo
-
