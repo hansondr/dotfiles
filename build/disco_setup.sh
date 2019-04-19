@@ -80,5 +80,13 @@ echo 'Default config located at ~/.config/sway/config'
 
 
 echo
-echo 'Setup complete!  Run `sway` to begin'
+read -p 'Sway expects the urxvt terminal by default, would you like to install it?' -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  sudo apt install -qq rxvt-unicode
+fi
+
+echo
+echo 'Setup complete!  Run `sway` to begin (`swaymsg exit` to quit sway)'
 echo
