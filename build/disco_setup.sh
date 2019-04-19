@@ -73,6 +73,12 @@ ninja -C build
 sudo ninja -C build install
 
 
+echo '[bash] copy over default Sway config...'
+mkdir -p ~/.config/sway
+cp /etc/sway/config ~/.config/sway/
+echo 'Default config located at ~/.config/sway/config'
+
+
 echo
-echo 'Setup complete!'
+echo 'Setup complete!  Run `sway` to begin'
 echo
