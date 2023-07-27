@@ -2,9 +2,9 @@
 # for config (~/.zsh/*.zsh) source $config
 
 # load custom executable functions
-#for function in ~/.zsh/functions/*; do
-#  source $function
-#done
+for function in ~/.zsh/functions/*; do
+  source $function
+done
 
 for function (~/.zsh/functions/*) source $function
 
